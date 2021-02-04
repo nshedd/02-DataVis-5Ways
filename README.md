@@ -1,16 +1,16 @@
-# 02-DataVis-7ways
+# 02-DataVis-5ways
 
-Assignment 2 - Data Visualization, 7 Ways  
+Assignment 2 - Data Visualization, 5 Ways  
 ===
 
-Now that you have successfully made a "visualization" of shapes and lines using d3, your next assignment is to successfully make a *actual visualization*... 7 times. 
+Now that you have successfully made a "visualization" of shapes and lines using d3, your next assignment is to successfully make a *actual visualization*... 5 times. 
 
 The goal of this project is to gain experience with as many data visualization libraries, languages, and tools as possible.
 
 I have provided a small dataset about cars, `cars-sample.csv`.
 Each row contains a car and several variables about it, including miles-per-gallon, manufacturer, and more.
 
-Your goal is to use 7 different tools to make the following chart:
+Your goal is to use 5 different tools to make the following chart:
 
 ![ggplot2](img/ggplot2.png)
 
@@ -36,12 +36,12 @@ Improvements are also welcome as part of Technical and Design achievements.
 Libraries, Tools, Languages
 ---
 
-You are required to use 7 different tools or libraries.
-Of the 7 tools, you must use at least 3 libraries (libraries require code of some kind).
+You are required to use 5 different tools or libraries.
+Of the 5 tools, you must use at least 3 libraries (libraries require code of some kind).
 This could be `Python, R, Javascript`, or `Java, Javascript, Matlab` or any other combination.
 Dedicated tools (i.e. Excel) do not count towards the language requirement.
 
-Otherwise, you should seek tools and libraries to fill out your 7.
+Otherwise, you should seek tools and libraries to fill out your 5.
 
 Below are a few ideas. Do not limit yourself to this list!
 Some may be difficult choices, like Matlab or SPSS, which require large installations, licenses, and occasionally difficult UIs.
@@ -50,19 +50,17 @@ I have marked a few that are strongly suggested.
 
 - R + ggplot2 `<- definitely worth trying`
 - Excel
-- SPSS
-- d3 `<- since the rest of the class uses this, it's a good idea to use it`
-- nvd3
+- d3 `<- since the rest of the class uses this, we're requiring it`
 - Matplotlib
-- Pixi.js
-- Processing
-- Processing.js
+- three.js `<- well, it's a 3d library. not really recommended, but could be "interesting"`
+- p5js `<- good for playing around. not really a chart lib`
 - Tableau
 - Java 2d
 - GNUplot
-- Vega/Vega-lite
-- Flourish
+- Vega-lite <- `<- recently much better. look for the high level js implementations`
+- Flourish <- `<- popular last year`
 - PowerBI
+- SPSS
 
 You may write everything from scratch, or start with demo programs from books or the web. 
 If you do start with code that you found, please identify the source of the code in your README and, most importantly, make non-trivial changes to the code to make it your own so you really learn what you're doing. 
