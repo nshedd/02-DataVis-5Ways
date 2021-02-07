@@ -4,7 +4,15 @@
 Visualization: Way #1
 =
 I created the plot using ggplot. I also added interactivity using ggiraph. The only resources that I used to create this were the ggplot and ggiraph documentation.
-The code is linked here: 
+
+![ggplot22](img/ggplot_screenshot_blank.png)
+
+Above is the basic image of the plot. It plots all of the points, and adjusts the size of the point based on the weight of the car and the color based on the model. The points are all an opacity of 0.5.
+
+![ggplot22](img/ggplot_screenshot_interactive.png)
+
+Above is an example of the interactivity that I got using ggiraph. When you hover over a point on the graph, you can view that car's year, make, and model. 
+
 The plot itself is linked here: http://nshedd.github.io/02-DataVis-05Ways/ggplot_plot.html
 
 Assignment 2 - Data Visualization, 5 Ways  
