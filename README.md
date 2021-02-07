@@ -1,5 +1,12 @@
 # 02-DataVis-5ways
 
+
+Visualization: Way #1
+=
+I created the plot using ggplot. I also added interactivity using ggiraph. The only resources that I used to create this were the ggplot and ggiraph documentation.
+The code is linked here: 
+The plot itself is linked here: http://nshedd.github.io/02-DataVis-5Ways/img/ggplot_plot.html
+
 Assignment 2 - Data Visualization, 5 Ways  
 ===
 
