@@ -10,5 +10,7 @@ print(cars$Car)
 
 plot = ggplot(cars, aes(x=Weight, y=MPG, color=Manufacturer)) + geom_point_interactive(alpha=0.5, aes(size=Weight, tooltip = Make.Model, data_id = Make.Model))
 
-girafe(ggobj = plot)
+plot2 = girafe(ggobj = plot)
+plot2
 
+htmlwidgets::saveWidget(file = "ggplot_plot.html", plot2)
