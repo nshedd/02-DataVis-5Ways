@@ -1,8 +1,8 @@
 # 02-DataVis-5ways
 
 
-Visualization: Way #1
-=
+# Visualization Way #1: ggplot2
+
 I created the plot using ggplot. I also added interactivity using ggiraph. The only resources that I used to create this were the ggplot and ggiraph documentation.
 
 ![ggplot22](img/ggplot_screenshot_blank.png)
