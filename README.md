@@ -15,6 +15,22 @@ Above is an example of the interactivity that I got using ggiraph. When you hove
 
 The plot itself is linked here: http://nshedd.github.io/02-DataVis-05Ways/ggplot_plot.html
 
+# Visualization Way #2: matplotlib
+
+I recreated the plot using matplotlib. I used an assortment of resources for references, including old homework assignments, matplotlib documentation, Kite documentation, and 1 or 2 stack overflow posts. 
+
+![matplotlib](img/matplotlib_plot.png)
+
+Above is the final plot. I manually assigned colors and point sizes. Each point was sized as w^3.5/1000^3.5, where w is the weight of the car. I thought that this equation gave a size gradient that was easier to see than just directly using the weight. 
+
+Design Achievements
+==
+1) A well-thought out size gradient in matplotlib
+
+Technical Achievements
+==
+1) Interactivity with ggplot2
+
 Assignment 2 - Data Visualization, 5 Ways  
 ===
 
