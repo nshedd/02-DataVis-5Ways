@@ -23,6 +23,14 @@ I recreated the plot using matplotlib. I used an assortment of resources for ref
 
 Above is the final plot. I manually assigned colors and point sizes. Each point was sized as w^3.5/1000^3.5, where w is the weight of the car. I thought that this equation gave a size gradient that was easier to see than just directly using the weight. 
 
+I also designed 2 legends to include in the plot
+
+# Visualization Way #3: d3.js
+
+# Visualization Way #4: Excel
+
+I recreated the graph as a bubble plot in Microsoft Excel
+
 Design Achievements
 ==
 1) A well-thought out size gradient in matplotlib
@@ -30,6 +38,7 @@ Design Achievements
 Technical Achievements
 ==
 1) Interactivity with ggplot2
+2) Legends in matplotlib and D3
 
 Assignment 2 - Data Visualization, 5 Ways  
 ===
