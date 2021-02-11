@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript D3 Plot</title>
+    <style> /* set the CSS */
+    body {
+        margin: 0px;
+        overflow: hidden;
+    }
+
+    circle {
+        opacity: 0.5;
+    }
+
+    text {
+        font-family: sans-serif;
+    }
+
+    .tick text {
+        font-size: 2em;
+        fill: #635F5D;
+    }
+
+    .tick line {
+        stroke: #C0C0BB;
+    }
+
+    .axis-label {
+        font-size: 3em;
+        fill: 'black'
+    }
+
+    .tooltip {
+        position: absolute;
+        font-size: 12px;
+        width:  auto;
+        height: auto;
+        pointer-events: none;
+        background-color: white;
+    }
+
+    </style>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+  </head>
+  <body>
+    
+    <svg width="950" height="650"></svg>
+    
+    <div id="vis-container"></div>
+
+    <script>
+        const svg = d3.select('svg');
+
+        const width = +svg.attr('width');
+        const height = +svg.attr('height');
+
+        const render = data => {
+        
+            const xValue = d => d.Weight;
+            const xAxisLabel = 'Weight';
+            
+            const yValue = d => d.MPG;
+            const yAxisLabel = 'MPG';
+
+            const colorValue = d => d.Manufacturer;
+            
+            const margin = { top: 20, right: 40, bottom: 88, left: 150 };
+            const innerWidth = width - margin.left - margin.right - 200;
+            const legendWidth = width - innerWidth + 200
+            const innerHeight = height - margin.top - margin.bottom;
+            
+            const matrix = [
+                {index: 1, name: 'bmw', color: '#04a9db'},
+                {index: 2, name: 'ford', color: '#0477db'},
+                {index: 3, name: 'honda', color: '#a86de3'},
+                {index: 4, name: 'mercedes', color: '#04dbac'},
+                {index: 5, name: 'toyota', color: '#017844'}
+            ];
+
+            const sizeMatrix = [
+                {index1: 1, weight: 2000},
+                {index1: 2, weight: 3000},
+                {index1: 3, weight: 4000}
+            ]
+
+            const xScale = d3.scaleLinear()
+                .domain(d3.extent(data, xValue))
+                .range([0, innerWidth])
+                .nice();
+            
+            const yScale = d3.scaleLinear()
+                .domain(d3.extent(data, yValue))
+                .range([innerHeight, 0])
+                .nice();
+
+            const colorScale = d3.scaleOrdinal()
+                .domain(data.map(colorValue))
+                .range(['#04a9db', "#0477db", '#a86de3', '#04dbac', "#017844"]);
+            
+            const g = svg.append('g')
+                .attr('transform', `translate(${margin.left},${margin.top})`);
+            
+            const xAxis = d3.axisBottom(xScale)
+                .tickSize(-innerHeight)
+                .tickPadding(15);
+            
+            const yAxis = d3.axisLeft(yScale)
+                .tickSize(-innerWidth)
+                .tickPadding(10);
+            
+            const yAxisG = g.append('g').call(yAxis);
+            yAxisG.selectAll('.domain').remove();
+            
+            yAxisG.append('text')
+                .attr('class', 'axis-label')
+                .attr('y', -93)
+                .attr('x', -innerHeight / 2)
+                .attr('fill', 'black')
+                .attr('transform', `rotate(-90)`)
+                .attr('text-anchor', 'middle')
+                .text(yAxisLabel);
+            
+            const xAxisG = g.append('g').call(xAxis)
+                .attr('transform', `translate(0,${innerHeight})`);
+            
+            xAxisG.select('.domain').remove();
+            
+            xAxisG.append('text')
+                .attr('class', 'axis-label')
+                .attr('y', 75)
+                .attr('x', innerWidth / 2)
+                .attr('fill', 'black')
+                .text(xAxisLabel);
+
+            var tooltip = d3.select("#vis-container").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
+            
+            g.selectAll('circle').data(data)
+                .enter().append('circle')
+                .attr('cy', d => yScale(yValue(d)))
+                .attr('cx', d => xScale(xValue(d)))
+                .attr('r', d => d.Weight/250)
+                .attr('fill', d => colorScale(colorValue(d)))
+                .attr('stroke', d => colorScale(colorValue(d)))
+                .on('mouseover', function (d, i) {
+                    d3.select(this).transition()
+                        .duration('100')
+                        .attr("fill", '#FFB533');
+                    div.transition()
+                        .duration(100)
+                        .style("opacity", 1);
+                    tooltip.html(d.YearMakeModel)
+                        .style("left", (d3.event.pageX + 15) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px")
+                        .transition()
+                            .duration(200)
+                            .style("opacity", .9);
+                })
+                .on('mouseout', function (d, i) {
+                    d3.select(this).transition()
+                        .duration('200')
+                        .attr("fill", d => colorScale(colorValue(d)));
+                    div.transition()
+                        .duration('200')
+                        .style("opacity", 0);
+                    tooltip.transition()
+                        .duration(300) // ms
+                        .style("opacity", 0);
+                });
+
+            
+
+            const legend1 = g.append('g');
+
+            //Legend title (manufacturer)
+            legend1.append('text')
+                .attr('y', height - innerHeight)
+                .attr('x', legendWidth)
+                .attr('fill', 'black')
+                .attr('font-size', '1.5em')
+                .attr('text-anchor', 'left')
+                .text("Manufacturer");
+
+            //Circles for manu legend
+            legend1.selectAll('circle').data(matrix)
+                .enter().append('circle')
+                .attr('cy', d => height - innerHeight + (30*d.index))
+                .attr('cx', d => legendWidth + 5)
+                .attr('r', d => 5)
+                .attr('fill', d => d.color);
+
+            const legend1txt = legend1.append('g');
+            
+            //Text for manu legend
+            legend1txt.selectAll('text').data(matrix)
+                .enter(). append('text')
+                .attr('y', d => height - innerHeight + (30*d.index))
+                .attr('x', d => legendWidth + 25)
+                .attr('fill', 'black')
+                .attr('font-size', '1em')
+                .attr('text-anchor', 'left')
+                .text(function(d){
+                    return d.name;
+                })
+            
+            const legend2 = g.append('g');
+
+            // Title for weight legend
+            legend2.append('text')
+                .attr('y', (height - innerHeight/2 - 50))
+                .attr('x', legendWidth)
+                .attr('fill', 'black')
+                .attr('font-size', '1.5em')
+                .attr('text-anchor', 'left')
+                .text("Weight");
+
+            // Circles for weight legend
+            legend2.selectAll('circle').data(sizeMatrix)
+                .enter().append('circle')
+                .attr('cy', d => (height - innerHeight/2 - 50 + 35*d.index1))
+                .attr('cx', d => legendWidth + 5)
+                .attr('r', d => d.weight/250)
+                .attr('fill', 'black')
+                .attr('opacity', 0.5);
+
+            const legend2txt = legend2.append('g')
+
+            //Text for weight legend
+            legend2txt.selectAll('text').data(sizeMatrix)
+                .enter(). append('text')
+                .attr('y', d => (height - innerHeight/2 - 50 + 35*d.index1))
+                .attr('x', d => legendWidth + 40)
+                .attr('fill', 'black')
+                .attr('font-size', '1em')
+                .attr('text-anchor', 'left')
+                .text(function(d){
+                    return d.weight;
+                })
+        };
+
+        d3.csv('https://nshedd.github.io/02-DataVis-05Ways/cars-sample.csv')
+        .then(data => {
+            data = data.filter((d) => {
+                return d.MPG !== "NA";
+            });
+            data.forEach(d => {
+                d.YearMakeModel = d['Model.Year'] + ' ' + d.Manufacturer + ' ' + d.Car;
+                d.MPG = +d.MPG;
+                d.Cylinders = +d.Cylinders;
+                d.Displacement = +d.Displacement;
+                d.Horsepower = +d.Horsepower;
+                d.Weight = +d.Weight;
+                d.Acceleration = +d.Acceleration;
+                d['Model.Year'] = +d['Model.Year'];
+            });
+            console.log(data)
+            render(data);
+        });
+    </script>
+  </body>
+</html>
