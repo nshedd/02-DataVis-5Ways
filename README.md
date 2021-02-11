@@ -27,18 +27,41 @@ I also designed 2 legends to include in the plot
 
 # Visualization Way #3: d3.js
 
+I recreated the plot using d3.js. The code is in index.html
+
+![d3](img/d3_screenshot_main.png)
+
+I created a plot with custom colors and legends for the size color of the points. I used cool colors to give a better sense of uniformity, while still  
+making it easy to tell the difference between different series
+
+![d3](img/d3_screenshot_tooltip.png)
+
+I also added interactivity where the color of the point changes to yellow on hover.
+
 # Visualization Way #4: Excel
 
 I recreated the graph as a bubble plot in Microsoft Excel
 
+![excel](img/excell_plot.svg)
+
+I imported the csv file into excel. I created 5 series, one for each manufacturer, and used the Weight as the x axis and bubble size, and the MPG as the y axis. The 5 sizes were assigned different colors. I also had to manually create the tick marks at the right interval
+
+I also manually adjusted the theme colors and the axis bounds for a more visually appealing plot. 
+
+# Visualization Way #5: Tableau
+
+![tableau](img/tableau_plot_screenshot_main)
+![tableau](img/tableau_plot_screenshot_tooltip)
+
 Design Achievements
 ==
 1) A well-thought out size gradient in matplotlib
+2) Altered theme colors in excel and D3
 
 Technical Achievements
 ==
-1) Interactivity with ggplot2
-2) Legends in matplotlib and D3
+1) Interactivity with ggplot2, D3, and tableau
+2) Legends in matplotlib, python, D3, and tableau
 
 Assignment 2 - Data Visualization, 5 Ways  
 ===
