@@ -31,8 +31,7 @@ I recreated the plot using d3.js. The code is in index.html
 
 ![d3](img/d3_screenshot_main.png)
 
-I created a plot with custom colors and legends for the size color of the points. I used cool colors to give a better sense of uniformity, while still  
-making it easy to tell the difference between different series
+I created a plot with custom colors and legends for the size color of the points. I used cool colors to give a better sense of uniformity, while still making it easy to tell the difference between different series
 
 ![d3](img/d3_screenshot_tooltip.png)
 
@@ -51,7 +50,12 @@ I also manually adjusted the theme colors and the axis bounds for a more visuall
 # Visualization Way #5: Tableau
 
 ![tableau](img/tableau_plot_screenshot_main.png)
+
+I imported the csv file and created a plot and adjusted the weight and colors of the points. I then adjusted the axes to make tick lines below the axis and adjusted the bounds to fit the data
+
 ![tableau](img/tableau_plot_screenshot_tooltip.png)
+
+I also added a tooltip to display the year, make, and model of the car on hover.
 
 Design Achievements
 ==
