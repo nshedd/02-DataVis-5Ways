@@ -50,8 +50,8 @@ I also manually adjusted the theme colors and the axis bounds for a more visuall
 
 # Visualization Way #5: Tableau
 
-![tableau](img/tableau_plot_screenshot_main)
-![tableau](img/tableau_plot_screenshot_tooltip)
+![tableau](img/tableau_plot_screenshot_main.png)
+![tableau](img/tableau_plot_screenshot_tooltip.png)
 
 Design Achievements
 ==
